@@ -8,28 +8,28 @@
 </head>
 <body>
     <header th:replace="layout/plantilla :: header"></header>
-    <h1>Datos de la persona</h1>
-    <a th:href="@{/}"> Regresar</a>
+    <h1>[[#{persona.formulario}]]</h1>
+    <a th:href="@{/}"> [[#{accion.regresar}]]</a>
     <br>
     <form th:action="@{/guardar}" method="post" th:object="${persona}">
         <input type="hidden" name="idPersona" th:field="*{idPersona}"/>
         <br>
-        <label for="nombre">Nombre:</label>
+        <label for="nombre">[[#{persona.nombre}]]:</label>
         <input type="text" name="nombre" th:field="*{nombre}">
         <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"> Hubo un eror en el nombre</span>
         <br>
-        <label for="apellido">Apellido:</label>
+        <label for="apellido">[[#{persona.apellido}]]:</label>
         <input type="text" name="apellido" th:field="*{apellido}">
         <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"> Hubo un eror en el apellido</span>
         <br>
-        <label for="email">Email:</label>
+        <label for="email">[[#{persona.email}]]:</label>
         <input type="text" name="email" th:field="*{email}">
         <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> Hubo un eror en el email</span>
         <br>
-        <label for="telefono">Telefono:</label>
+        <label for="telefono">[[#{persona.telefono}]]:</label>
         <input type="tel" name="telefono" th:field="*{telefono}">
         <br>
-        <input type="submit" name="guardar" value="Guardar">
+        <input type="submit" name="guardar" TH:value="#{accion.guardar}">
     </form>
     <footer th:replace="layout/plantilla :: footer"></footer>
 </body>
