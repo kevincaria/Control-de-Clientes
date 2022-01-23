@@ -15,6 +15,9 @@
             <br>
             <a th:href="@{/(lang=es)}">ES</a> |
             <a th:href="@{/(lang=en)}">EN</a> |
+            <form th:action="@{/logout}" method="POST">
+                <a href="#" onclick="this.parentNode.submit();">Logout</a>
+            </form>
         </div>
         <span th:text="#{plantilla.pie-pagina}">footer</span>
     </footer>
