@@ -10,20 +10,20 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import lombok.extern.slf4j.Slf4j;
 import mx.com.gm.primero.dao.UsuarioDAO;
 import mx.com.gm.primero.entidad.Rol;
 import mx.com.gm.primero.entidad.Usuario;
 
 @Service("userDetailsService")
-@Slf4j
 public class UsuarioService implements UserDetailsService {
     
     @Autowired
     private UsuarioDAO usuarioDAO;
 
     @Override
+    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario usuario = usuarioDAO.findByUsername(username);
         if(usuario == null) {
